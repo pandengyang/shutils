@@ -1,3 +1,9 @@
 #!/bin/bash
 
-find $1 -name "*.go" | xargs -I {} go fmt {}
+if [ -d "$1" ]; then
+	find $1 -name "*.go" | xargs -I {} go fmt {}
+
+elif [ -f "$1" ]; then
+	go fmt $1
+
+fi

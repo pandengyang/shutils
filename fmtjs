@@ -1,3 +1,9 @@
 #!/bin/bash
 
-find $1 -name "*.js" -o -name "*.vue" | xargs -I {} prettier --no-semi --single-quote --write {}
+if [ -d "$1" ]; then
+	find $1 -name "*.js" -o -name "*.vue" | xargs -I {} prettier --no-semi --single-quote --write {}
+
+elif [ -f "$1" ]; then
+	prettier --no-semi --single-quote --write $1
+
+fi

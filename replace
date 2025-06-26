@@ -1,3 +1,9 @@
 #!/bin/bash
 
-find $1 -type f | xargs -I {} sed -i "s/$2/$3/g" {}
+if [ -d "$1" ]; then
+	find $1 -type f | xargs -I {} sed -i "s/$2/$3/g" {}
+
+elif [ -f "$1" ]; then
+	sed -i "s/$2/$3/g" $1
+
+fi

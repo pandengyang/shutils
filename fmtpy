@@ -1,3 +1,9 @@
 #!/bin/bash
 
-find $1 -name "*.py" | xargs -I {} yapf -i {}
+if [ -d "$1" ]; then
+	find $1 -name "*.py" | xargs -I {} yapf -i {}
+
+elif [ -f "$1" ]; then
+	yapf -i $1
+
+fi
