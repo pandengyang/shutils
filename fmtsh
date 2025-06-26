@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# sudo snap install shfmt
+
+if [ -d "$1" ]; then
+	find $1 -name "*.c" -o -name "*.h" | xargs -I {} shfmt -w $1
+
+elif [ -f "$1" ]; then
+	shfmt -w $1
+
+fi

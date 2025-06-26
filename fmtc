@@ -1,0 +1,11 @@
+#!/bin/bash
+
+style="{BasedOnStyle: Webkit, UseTab: Always, IndentWidth: 8, TabWidth: 8}"
+
+if [ -d "$1" ]; then
+	find $1 -name "*.c" -o -name "*.h" | xargs -I {} clang-format -style="$style" -i {}
+
+elif [ -f "$1" ]; then
+	clang-format -style="$style" -i $1
+
+fi
